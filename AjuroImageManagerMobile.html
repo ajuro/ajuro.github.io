@@ -33,7 +33,7 @@
 								<span class="fa-stack fa-3x">
 									<!--i class="fa fa-circle-o-notch fa-spin fa-stack-1x fa-fw"></i-->
 									<strong class="fa-stack-1x calendar-text">
-										<a href="https://example.com" class="round-button facebook"><img width='60' height='60' src='https://cdn1.iconfinder.com/data/icons/social-media-icon-1/112/facebook-128.png' title='Facebook'></a>
+										<a target='_blank' href="https://www.facebook.com/ajuro1/" class="round-button facebook"><img width='60' height='60' src='https://cdn1.iconfinder.com/data/icons/social-media-icon-1/112/facebook-128.png' title='Facebook'></a>
 									</strong>
 									</span>
 							</td>
@@ -41,7 +41,7 @@
 								<span class="fa-stack fa-3x">
 									<!--i class="fa fa-circle-o-notch fa-spin fa-stack-1x fa-fw"></i-->
 								<strong class="fa-stack-1x">
-										<a href="https://example.com" class="round-button"><img width='60' height='60' src='https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-128.png' title='Pinterest'></a>
+										<a target='_blank' href="https://uk.pinterest.com/ajuromania/romanin-products/" class="round-button"><img width='60' height='60' src='https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-128.png' title='Pinterest'></a>
 									</strong>
 									</span>
 							</td>
@@ -49,7 +49,7 @@
 								<span class="fa-stack fa-3x">
 									<!--i class="fa fa-circle-o-notch fa-spin fa-stack-1x fa-fw"></i-->
 								<strong class="fa-stack-1x">
-										<a href="https://example.com" class="round-button"><img width='60' height='60' src='https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-linkedin-circle-128.png' title='LinkdIn'></a>
+										<a target='_blank' href="https://www.linkedin.com/in/ajuro" class="round-button"><img width='60' height='60' src='https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-linkedin-circle-128.png' title='LinkdIn'></a>
 									</strong>
 									</span>
 							</td>
@@ -57,7 +57,7 @@
 								<span class="fa-stack fa-3x">
 									<!--i class="fa fa-circle-o-notch fa-spin fa-stack-1x fa-fw"></i-->
 								<strong class="fa-stack-1x">
-										<a href="https://example.com" class="round-button"><img width='60' height='60' src='https://cdn4.iconfinder.com/data/icons/miu-black-social-2/60/twitter-128.png' title='Twitter'></a>
+										<a target='_blank' href="https://twitter.com/AjuRoVoice" class="round-button"><img width='60' height='60' src='https://cdn4.iconfinder.com/data/icons/miu-black-social-2/60/twitter-128.png' title='Twitter'></a>
 									</strong>
 									</span>
 							</td>
@@ -111,11 +111,11 @@ delegate.success(function (response)
 {
 	ComputeDPI();
 	$('#title').html($('#title').html()+' '+dpi_x);
-	marginRight*=dpi_x/96
+	//marginRight*=dpi_x/96;
 	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
 	data = response.result;
-	nrOfCols = Math.round((window.outerWidth-marginRight)/130*dpi_x/96)-1;
-	$('#main_div').height(window.outerHeight-430*dpi_y/96);
+	nrOfCols = Math.floor((window.outerWidth-marginRight)/130);
+	$('#main_div').height(window.outerHeight*dpi_x/96-100);
 	CreateTable();
 	$('.thumbnail').height(130*dpi_y/96);
 	$('.thumbnail').width(130*dpi_x/96);
@@ -153,10 +153,10 @@ function WindowResized()
 {
     var w = window.outerWidth;
     var h = window.outerHeight;
-	$('#main_div').height(h-430*dpi_y/96);
-	if((Math.round((w-marginRight)/130*dpi_x/96)-1) != nrOfCols)
+	$('#main_div').height(h*dpi_x/96-100);
+	if((Math.round((w-marginRight)/130)-1) != nrOfCols)
 	{
-		nrOfCols = Math.round((w-marginRight)/130*dpi_x/96)-1;
+		nrOfCols = Math.floor((w-marginRight)/130);
 		CreateTable();
 	}
 }
