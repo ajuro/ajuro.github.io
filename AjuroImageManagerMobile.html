@@ -71,7 +71,7 @@
 			<table id='main_table' cellspacing="0" cellpadding="5"></table>
 		</div>
 		<div class='separator bottom'>&nbsp;</div>
-		<table  class='down' cellspacing="0" cellpadding="5">
+		<table id='footer' class='down' cellspacing="0" cellpadding="5">
 			<tr>
 				<td width='80'>
 					<i class="action_button fa fa-home  fa-3x" aria-hidden="true"></i>
@@ -138,7 +138,7 @@ delegate.success(function (response)
 	{
 		if(window.orientation == 90 || window.orientation == 270)
 		{
-			$('#main_div').height(window.outerWidth-420);
+			$('#main_div').height(window.outerWidth-450);
 		}
 	}
 	CreateTable();
