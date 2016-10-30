@@ -115,7 +115,7 @@ delegate.success(function (response)
 	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
 	data = response.result;
 	nrOfCols = Math.round((window.outerWidth-marginRight)/130*dpi_x/96)-1;
-	$('#main_div').height(window.outerHeight-430);
+	$('#main_div').height(window.outerHeight-430*dpi_y/96);
 	CreateTable();
 	$('.thumbnail').height(130*dpi_y/96);
 	$('.thumbnail').width(130*dpi_x/96);
@@ -130,16 +130,8 @@ function ComputeDPI(){
 	var body = document.getElementsByTagName("body")[0];
 	body.appendChild(div);
 	var devicePixelRatio = window.devicePixelRatio || 1;
-	dpi_x = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
-	dpi_y = document.defaultView.getComputedStyle(div, null).getPropertyValue('height');
-	if(dpi_x.indexOf('px')>0)
-	{
-		dpi_x = dpi_x.substring(0, dpi_x.length-2);
-	}
-	if(dpi_y.indexOf('px')>0)
-	{
-		dpi_y = dpi_y.substring(0, dpi_y.length-2);
-	}
+	dpi_x = div.offsetWidth * devicePixelRatio;
+	dpi_y = div.offsetHeight * devicePixelRatio;
 	body.removeChild(div);
 }
 
@@ -161,7 +153,7 @@ function WindowResized()
 {
     var w = window.outerWidth;
     var h = window.outerHeight;
-	$('#main_div').height(h-430);
+	$('#main_div').height(h-430*dpi_y/96);
 	if((Math.round((w-marginRight)/130*dpi_x/96)-1) != nrOfCols)
 	{
 		nrOfCols = Math.round((w-marginRight)/130*dpi_x/96)-1;
