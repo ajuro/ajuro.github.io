@@ -93,7 +93,7 @@
 var readUlr = 'https://aju.ro/api/index.php'; // GET example ?read=product&take=10&skip=0
 var data = null;
 var nrOfCols = 3;
-var marginRight = 20;
+var marginRight = 0;
 var dpi_x = 96;
 var dpi_y = 96;
 
@@ -114,7 +114,7 @@ delegate.success(function (response)
 	//marginRight*=dpi_x/96;
 	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
 	data = response.result;
-	nrOfCols = Math.floor((window.outerWidth-marginRight)/130);
+	nrOfCols = Math.floor((window.outerWidth-marginRight)/130)-1;
 	$('#main_div').height(window.outerHeight*dpi_x/96-100);
 	CreateTable();
 	$('.thumbnail').height(130*dpi_y/96);
@@ -154,9 +154,9 @@ function WindowResized()
     var w = window.outerWidth;
     var h = window.outerHeight;
 	$('#main_div').height(h*dpi_x/96-100);
-	if((Math.round((w-marginRight)/130)-1) != nrOfCols)
+	if((Math.floor((w-marginRight)/130))-1 != nrOfCols)
 	{
-		nrOfCols = Math.floor((w-marginRight)/130);
+		nrOfCols = Math.floor((w-marginRight)/130)-1;
 		CreateTable();
 	}
 }
