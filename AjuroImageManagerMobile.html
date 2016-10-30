@@ -5,9 +5,9 @@
 	<script src="https://use.fontawesome.com/526b5971ba.js"></script>
 	<link rel="stylesheet" type="text/css" href="AjuroImageManager.css">
 </head>
-
-<center>
-<table width="98%" border="0" cellspacing="0" cellpadding="5" style="position: fixed; top: 0px; border:0px solid #aaa;">
+<body onresize="WindowResized()">
+<center><div>
+<table class='up' cellspacing="0" cellpadding="5">
 			<tr>
 				<td width='50'>
 					<i class="fa fa-arrows-alt fa-3x page_control" aria-hidden="true"></i>
@@ -26,8 +26,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan=3>
-					<table>
+				<td colspan=4>
+					<table style='width: auto'>
 						<tr>
 							<td>
 								<span class="fa-stack fa-3x">
@@ -66,94 +66,79 @@
 				</td>
 			</tr>
 		</table>
-		<div style='margin-top: 200px; position: fixed; height:300px; overflow-y: auto;; width: 100%'>
-		<table width="98%" border="0" cellspacing="0" cellpadding="5" style="border:0px solid #aaa;">
-			<tr>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-				<td>
-					<img class='thumbnail' src='https://aju.ro/img/logo.png'>
-				</td>
-			</tr>
-		</table>
+		<div class='separator top'>&nbsp;</div>
+		<div id='main_div'>
+			<table id='main_table' cellspacing="0" cellpadding="5"></table>
 		</div>
-		<table width="98%" border="0" cellspacing="0" cellpadding="5" style="position: fixed; bottom: 0px; border:0px solid #aaa;">
+		<div class='separator bottom'>&nbsp;</div>
+		<table  class='down' cellspacing="0" cellpadding="5">
 			<tr>
 				<td width='80'>
-					<i class="fa fa-home  fa-5x" aria-hidden="true"></i>
+					<i class="action_button fa fa-home  fa-3x" aria-hidden="true"></i>
 				</td>
 				<td>
 				</td>
 				<td width='80'>
-					<i class="fa fa-heart  fa-5x" aria-hidden="true"></i>
+					<i class="action_button fa fa-heart  fa-3x" aria-hidden="true"></i>
 				</td>
 				<td>
 				</td>
 				<td width='80'>
-					<i class="fa fa-chevron-circle-right  fa-5x" aria-hidden="true"></i>
+					<i class="action_button fa fa-chevron-circle-right  fa-3x" aria-hidden="true"></i>
 				</td>
 			</tr>
-		</table>
+		</table></div>
 		</center>
 <script>
 var readUlr = 'https://aju.ro/api/index.php'; // GET example ?read=product&take=10&skip=0
+var data = null;
+var nrOfCols = 3;
+var marginRight = 20;
 
 function GetLasts(entity){
     return($.ajax({
 		url: readUlr,
 		type: 'GET',
 		dataType: 'json',
-		data: { read: entity, take: 12, skip: 0 }
+		data: { read: entity, take: 100, skip: 0 }
 	}));
 }
 
 var delegate = GetLasts('image');
 delegate.success(function (response) 
-{                
+{
 	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
-
-	for(i=response.result.length; i>0; i--)
-	{
-		AddPost('ajuro_last_posts', response.result[i-1]);
-	}
+	data = response.result;
+	nrOfCols = Math.round((window.outerWidth-marginRight)/130)-1;
+	$('#main_div').height(window.outerHeight-430);
+	CreateTable();
 }).error(function(xhr, error){
     //alert( "Error: " + xhr.statusText );
 });
+
+function CreateTable()
+{    
+	var contentHTML = '';
+	for(i=100; i>0; i--)
+	{
+		if(((100-i)%nrOfCols) == 0)
+		{
+			contentHTML += "			</tr>\n			<tr>\n";
+		}
+		contentHTML += "				<td>\n					<img class='thumbnail' src='https://aju.ro/img/logo.png'>\n				</td>\n";
+	}
+	$('#main_table').html(contentHTML.substring(9));
+}
+
+function WindowResized()
+{
+    var w = window.outerWidth;
+    var h = window.outerHeight;
+	$('#main_div').height(h-430);
+	if((Math.round((w-marginRight)/130)-1) != nrOfCols)
+	{
+		nrOfCols = Math.round((w-marginRight)/130)-1;
+		CreateTable();
+	}
+}
 </script>
