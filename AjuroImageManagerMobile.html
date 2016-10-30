@@ -123,7 +123,7 @@ delegate.success(function (response)
 	{
 		if(window.orientation == 90 || window.orientation == 270)
 		{
-			nrOfCols = Math.floor((window.outerHeight-marginRight)/130*ratio/(orientation==0?1:window.outerWidth/window.outerHeight));
+			nrOfCols = Math.floor((window.outerHeight-marginRight)/130*ratio/(window.orientation==0?1:window.outerWidth/window.outerHeight));
 		}
 		else
 		{
@@ -142,8 +142,8 @@ delegate.success(function (response)
 		}
 	}
 	CreateTable();
-	$('.thumbnail').height(130*ratio/(orientation==0?1:window.outerWidth/window.outerHeight));
-	$('.thumbnail').width(130*ratio/(orientation==0?1:window.outerWidth/window.outerHeight));
+	$('.thumbnail').height(130*ratio/(window.orientation==0?1:window.outerWidth/window.outerHeight));
+	$('.thumbnail').width(130*ratio/(window.orientation==0?1:window.outerWidth/window.outerHeight));
 }).error(function(xhr, error){
     //alert( "Error: " + xhr.statusText );
 });
@@ -176,9 +176,9 @@ $(window).on("orientationchange",function(){
 			$('#main_div').height(window.outerWidth-420);
 		}
 	}
+	$('.thumbnail').height(130*ratio/(window.orientation==0?1:window.outerWidth/window.outerHeight));
+	$('.thumbnail').width(130*ratio/(window.orientation==0?1:window.outerWidth/window.outerHeight));
 	CreateTable();
-	$('.thumbnail').height(130*dpi_y/96);
-	$('.thumbnail').width(130*dpi_x/96);
 });
 
 function ComputeDPI(){
