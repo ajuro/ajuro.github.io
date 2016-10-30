@@ -123,6 +123,19 @@ delegate.success(function (response)
     //alert( "Error: " + xhr.statusText );
 });
 
+$(window).on("orientationchange",function(){
+	ComputeDPI();
+	$('#title').html($('#title').html()+' '+dpi_x);
+	//marginRight*=dpi_x/96;
+	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
+	data = response.result;
+	nrOfCols = Math.floor((window.outerWidth-marginRight)/130)-1;
+	$('#main_div').height(window.outerHeight*dpi_x/96-100);
+	CreateTable();
+	$('.thumbnail').height(130*dpi_y/96);
+	$('.thumbnail').width(130*dpi_x/96);
+}
+
 function ComputeDPI(){
 	var div = document.createElement("div");
 	div.style.width="1in";
