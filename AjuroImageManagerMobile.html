@@ -13,7 +13,7 @@
 					<i class="fa fa-arrows-alt fa-3x page_control" aria-hidden="true"></i>
 				</td>
 				<td  rowspan=2>
-					<div class='title'>Ajuro</div>
+					<div id='title' class='title'>Ajuro</div>
 				</td>
 				<td>
 				</td>
@@ -109,6 +109,7 @@ var delegate = GetLasts('image');
 delegate.success(function (response) 
 {
 	dpi = getPPI();
+	$('#title').html($('#title').html()+' '+dpi);
 	marginRight*=dpi/96
 	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
 	data = response.result;
