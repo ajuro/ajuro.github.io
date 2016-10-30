@@ -125,10 +125,6 @@ delegate.success(function (response)
 
 $(window).on("orientationchange",function(){
 	ComputeDPI();
-	$('#title').html($('#title').html()+' '+dpi_x);
-	//marginRight*=dpi_x/96;
-	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
-	data = response.result;
 	nrOfCols = Math.floor((window.outerWidth-marginRight)/130)-1;
 	$('#main_div').height(window.outerHeight*dpi_x/96-100);
 	CreateTable();
