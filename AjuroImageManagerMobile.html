@@ -94,7 +94,8 @@ var readUlr = 'https://aju.ro/api/index.php'; // GET example ?read=product&take=
 var data = null;
 var nrOfCols = 3;
 var marginRight = 20;
-var dpi =1;
+var dpi_x = 96;
+var dpi_y = 96;
 
 function GetLasts(entity){
     return($.ajax({
@@ -108,34 +109,38 @@ function GetLasts(entity){
 var delegate = GetLasts('image');
 delegate.success(function (response) 
 {
-	dpi = getPPI();
-	$('#title').html($('#title').html()+' '+dpi);
-	marginRight*=dpi/96
+	ComputeDPI();
+	$('#title').html($('#title').html()+' '+dpi_x);
+	marginRight*=dpi_x/96
 	$('#received_json').html(JSON.stringify(response,null,'\t').replace(/\n/g,'<br>').replace(/\t/g,'&nbsp;&nbsp;&nbsp;'));
 	data = response.result;
-	nrOfCols = Math.round((window.outerWidth-marginRight)/130*dpi/96)-1;
+	nrOfCols = Math.round((window.outerWidth-marginRight)/130*dpi_x/96)-1;
 	$('#main_div').height(window.outerHeight-430);
 	CreateTable();
-	$('.thumbnail').height(130*dpi/96);
-	$('.thumbnail').width(130*dpi/96);
+	$('.thumbnail').height(130*dpi_y/96);
+	$('.thumbnail').width(130*dpi_x/96);
 }).error(function(xhr, error){
     //alert( "Error: " + xhr.statusText );
 });
 
-function getPPI(){
- // create an empty element
- var div = document.createElement("div");
- // give it an absolute size of one inch
- div.style.width="1in";
- // append it to the body
- var body = document.getElementsByTagName("body")[0];
- body.appendChild(div);
- // read the computed width
- var ppi = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
- // remove it again
- body.removeChild(div);
- // and return the value
- return parseFloat(ppi);
+function ComputeDPI(){
+	var div = document.createElement("div");
+	div.style.width="1in";
+	div.style.height="1in";
+	var body = document.getElementsByTagName("body")[0];
+	body.appendChild(div);
+	var devicePixelRatio = window.devicePixelRatio || 1;
+	dpi_x = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
+	dpi_y = document.defaultView.getComputedStyle(div, null).getPropertyValue('height');
+	if(dpi_x.indexOf('px')>0)
+	{
+		dpi_x = dpi_x.substring(0, dpi_x.length-2);
+	}
+	if(dpi_y.indexOf('px')>0)
+	{
+		dpi_y = dpi_y.substring(0, dpi_y.length-2);
+	}
+	body.removeChild(div);
 }
 
 function CreateTable()
@@ -157,9 +162,9 @@ function WindowResized()
     var w = window.outerWidth;
     var h = window.outerHeight;
 	$('#main_div').height(h-430);
-	if((Math.round((w-marginRight)/130*dpi/96)-1) != nrOfCols)
+	if((Math.round((w-marginRight)/130*dpi_x/96)-1) != nrOfCols)
 	{
-		nrOfCols = Math.round((w-marginRight)/130*dpi/96)-1;
+		nrOfCols = Math.round((w-marginRight)/130*dpi_x/96)-1;
 		CreateTable();
 	}
 }
