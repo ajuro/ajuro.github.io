@@ -18,6 +18,7 @@ table
 
 #main_div
 {
+	height: 80%;
 	margin-top: 200px;
 	position: fixed;
 	overflow-y: auto;
