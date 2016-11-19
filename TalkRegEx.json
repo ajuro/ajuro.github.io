@@ -2,7 +2,7 @@
 	"rules" : [
 		{
 			"regex" : "i ([a-z]*) you are ([^.]*)",
-			"answer" : "Why do you $2 I am $2?"
+			"answer" : "Why do you $1 I am $2?"
 		},
 		{
 			"regex" : "i ([a-z]*) you have ([^.]*)",
