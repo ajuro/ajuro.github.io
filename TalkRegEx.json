@@ -1,0 +1,12 @@
+{
+	"rules" : [
+		{
+			"regex" : "i ([a-z]*) you are ([^.]*)",
+			"answer" : "Why do you $2 I am $1?"
+		},
+		{
+			"regex" : "i ([a-z]*) you have ([^.]*)",
+			"answer" : "Why do you $2 I have $1?"
+		}
+	]
+}

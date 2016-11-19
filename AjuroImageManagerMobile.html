@@ -90,7 +90,7 @@
 		</table></div>
 		</center>
 <script>
-var readUlr = 'https://aju.ro/api/index.php'; // GET example ?read=product&take=10&skip=0
+var readUlr = 'https://aju.ro/api/index.php'; //?read=product&take=100&skip=0';
 var data = null;
 var nrOfCols = 3;
 var marginRight = 0;
@@ -107,7 +107,7 @@ function GetLasts(entity){
 	}));
 }
 
-var delegate = GetLasts('image');
+var delegate = GetLasts('allimage');
 delegate.success(function (response) 
 {
 	ComputeDPI();
