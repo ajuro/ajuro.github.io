@@ -14,5 +14,22 @@
 				"I never kney I have $2?"
 			]
 		}
+	],
+	"defaults" : [
+		{
+			"case" : "Nothing matched",
+			"answers" : [
+				"Tell me more!",
+				"Boring",
+				"You know a lot of words. Don't you?",
+				"Can we change the subject?"
+			]
+		},
+		{
+			"case" : "New subjects",
+			"answers" : [
+				"Can we talk about history?"
+			]
+		}
 	]
 }
