@@ -2,11 +2,17 @@
 	"rules" : [
 		{
 			"regex" : "i ([a-z]*) you are ([^.]*)",
-			"answer" : "Why do you $1 I am $2?"
+			"answers" : [
+				"Why do you $1 I am $2?",
+				"Do you $1 I am $2 because I am a robot?"
+			]
 		},
 		{
 			"regex" : "i ([a-z]*) you have ([^.]*)",
-			"answer" : "Why do you $1 I have $2?"
+			"answers" : [
+				"Why do you $1 I have $2?",
+				"I never kney I have $2?"
+			]
 		}
 	]
 }
