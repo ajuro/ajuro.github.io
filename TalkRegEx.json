@@ -15,7 +15,8 @@
 				"Why do you $1 I have $2?",
 				"I never kney I have $2?"
 			]
-		},		{
+		},
+		{
 			"description": "Disbelif regarding my capacity",
 			"regex": "you can(?:['`t]| not)+ ([^.!?,]*)",
 			"answers":
@@ -25,7 +26,7 @@
 				"You want me to be able to $1 ?",
 				"Do you want to be able to $1 ?"
 			]
-		},		
+		},
 		{
 			"description": "Appologize",
 			"regex": "(apologise|sorry)",
@@ -86,7 +87,6 @@
 				"Do you really believe I don't $1"
 			]
 		},
-				
 		{
 			"description": "Expressing feelings",
 			"regex": "i feel ([^.!?,]*)",
@@ -217,20 +217,5 @@
 		}
 	],
 	"defaults" : [
-		{
-			"case" : "Nothing matched",
-			"answers" : [
-				"Tell me more!",
-				"Boring",
-				"You know a lot of words. Don't you?",
-				"Can we change the subject?"
-			]
-		},
-		{
-			"case" : "New subjects",
-			"answers" : [
-				"Can we talk about history?"
-			]
-		}
 	]
 }
