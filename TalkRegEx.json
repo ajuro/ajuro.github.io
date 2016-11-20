@@ -217,5 +217,27 @@
 		}
 	],
 	"defaults" : [
+		{
+			"case" : "Nothing matched",
+			"answers" : [
+				"Tell me more!",
+				"Boring",
+				"You know a lot of words. Don't you?",
+				"Don't you want to talk about emotions?"
+				"OMG! I can not understand you, man.",
+				"I try to solve your problem, but you have to tell me more",
+				"Keep talking, I'm litening",
+				"I still learn new things from you",
+				"Please elaborate!",
+				"I like to talk to you!",
+				"Can we change the subject?"
+			]
+		},
+		{
+			"case" : "New subjects",
+			"answers" : [
+				"Can we talk about history?"
+			]
+		}
 	]
 }
