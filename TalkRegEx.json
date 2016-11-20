@@ -17,6 +17,30 @@
 			]
 		},
 		{
+			"description": "My posession",
+			"regex" : "i am ([^.]*)",
+			"answers" : [
+				"Why are you $1 ?",
+				"Are you sure you are $1 ?",
+				"I still don't realize how are you $1.",
+				"That makes me think you are different.",
+				"I never meet such a person before.",
+				"Being $1 is not always a good thing!"
+			]
+		},
+		{
+			"description": "Your posession",
+			"regex" : "i have ([^.]*)",
+			"answers" : [
+				"Yes, you have $1 ?",
+				"I wish I have $1 ?",
+				"What else can I know about you ?",
+				"You are an interesting person ?",
+				"Your pestonality is quite strange. But I never thought you might have $1 ?",
+				"Are you sure you have $1 ?"
+			]
+		},
+		{
 			"description": "Disbelif regarding my capacity",
 			"regex": "you can(?:['`t]| not)+ ([^.!?,]*)",
 			"answers":
