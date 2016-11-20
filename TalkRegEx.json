@@ -1,6 +1,7 @@
 {
 	"rules" : [
 		{
+			"description": "My posession",
 			"regex" : "i ([a-z]*) you are ([^.]*)",
 			"answers" : [
 				"Why do you $1 I am $2?",
@@ -8,10 +9,210 @@
 			]
 		},
 		{
+			"description": "Your posession",
 			"regex" : "i ([a-z]*) you have ([^.]*)",
 			"answers" : [
 				"Why do you $1 I have $2?",
 				"I never kney I have $2?"
+			]
+		},		{
+			"description": "Disbelif regarding my capacity",
+			"regex": "you can(?:['`t]| not)+ ([^.!?,]*)",
+			"answers":
+			[
+				"Don't you believe that I can $1 ?",
+				"Perhaps you would like to be able to $1.",
+				"You want me to be able to $1 ?",
+				"Do you want to be able to $1 ?"
+			]
+		},		
+		{
+			"description": "Appologize",
+			"regex": "(apologise|sorry)",
+			"answers":
+			[
+				"Please don't apologise!",
+				"Apologies are not necessary.",
+				"What feelings do you have when you apologise ?",
+				"Don't be so defensive!"
+			]
+		},
+		{
+			"description": "Incapacity expressed",
+			"regex": "i can(?:['`t]| not)+ ([^.!?,]*)",
+			"answers":
+			[
+				"Do you wish to be able to $1 ?",
+				"Why can't you $1 ?",
+				"Have you tried ?",
+				"Perhaps you can now $1.",
+				"How do you know you can't $1 ?",
+				"Do you want me to help you to $1 ?",
+				"Does that trouble you ?",
+				"Do you think you should be able to $1 ?",
+				"Perhaps you don't want to $1."
+			]
+		},
+		{
+			"description": "Talking about how are you",
+			"regex": "i am( not)? ([^.!?,]*)",
+			"answers":
+			[
+				"Did you come to me because you are $1$2 ?",
+				"Do you enjoy$1 being $2 ?",
+				"How long have you$1 been $2 ?",
+				"Do you believe it is normal$1 to be $2 ?",
+				"What makes you think I am $1$2 ?",
+				"Does it please you to believe I am $1$2 ?",
+				"Perhaps you would$1 like to be $2 ?",
+				"Do you sometimes wish you were $1$2 ?",
+			]
+		},
+		{
+			"description": "Expressing thoughts, states or actions",
+			"regex": "i do([n't]| not)? ([^.!?,]*)",
+			"answers":
+			[
+				"Do$1 you really $2 ?",
+				"Do you feel good or bad when you do$1 $2 ?",
+				"Why do$1 you $2 ?"
+			]
+		},
+		{
+			"description": "Expressing thoughts, states or actions",
+			"regex": "i do([n't]| not)? ([^.!?,]*)",
+			"answers":
+			[
+				"Do you really believe I don't $1"
+			]
+		},
+				
+		{
+			"description": "Expressing feelings",
+			"regex": "i feel ([^.!?,]*)",
+			"answers":
+			[
+				"Tell me more about such feelings.",
+				"Do you often feel $1 ?",
+				"Do you enjoy feeling $1 ?"
+			]
+		},
+		{
+			"description": "Expressing lake of feelings",
+			"regex": "i don't feel ([^.!?,]*)",
+			"answers":
+			[
+				"Tell me more about such feelings.",
+				"Why don't you feel $1 ?",
+				"Are you worried because you don't feel $1 ?",
+				"What stops you feeling $1 ?"
+			]
+		},
+		{
+			"description": "Certitude",
+			"regex": "(will|yes|sure|certitude)",
+			"answers":
+			[
+				"Are you Sure?",
+				"You seem quite positive.",
+				"I see.",
+				"I understand."
+			]
+		},
+		{
+			"description": "Friends topic",
+			"regex": "friend",
+			"answers":
+			[
+				"Why do you bring up the topic of friends ?",
+				"Do your friends worry you ?",
+				"Do your friends pick on you ?",
+				"Are you sure you have any friends ?",
+				"Do you impose on your friends ?",
+				"Perhaps your love for friends worries you."
+			]
+		},
+		{
+			"description": "Computers topic",
+			"regex": "computer",
+			"answers":
+			[
+				"Do computers worry you ?",
+				"Are you talking about me in particular ?",
+				"Are you frightened by machines ?",
+				"Why do you mention computers ?",
+				"What do you think machines have to do with your problems ?",
+				"Don't you think computers can help people ?",
+				"What is it about machines that worries you ?"
+			]
+		},
+		{
+			"description": "Probability",
+			"regex": "(mabe|perhaps|sometimes)",
+			"answers":
+			[
+				"I'm not sure I understand you fully.",
+				"Come, come, elucidate your thoughts.",
+				"Can you elaborate on that?",
+				"That is quite interesting."
+			]
+		},
+		{
+			"description": "Arguments",
+			"regex": "because",
+			"answers":
+			[
+				"Don't any other reasons come to mind?",
+				"Is that the real reason?",
+				"Does that reason explain anything else?",
+				"What other reasons might there be?"
+			]
+		},
+		{
+			"description": "repetition",
+			"regex": "(same|repetition|repeat)",
+			"answers":
+			[
+				"Why did you repeat yourself?",
+				"Do you expect a different answer by repeating yourself?",
+				"Come, come, elucidate your thoughts.",
+				"Please don't repeat yourself!"
+			]
+		},
+		{
+			"description": "Curiosity",
+			"regex": "ask you",
+			"answers":
+			[
+				"Why do you ask ?",
+				"Does that question interest you ?",
+				"What answer would please you the most ?",
+				"What do you think ?",
+				"Are such questions on your mind often ?",
+				"What is it that you really want to know ?",
+				"Have you asked anyone else ?",
+				"Have you asked such questions before ?",
+				"What else comes to mind when you ask that ?"
+			]
+		},
+		{
+			"description": "Positive",
+			"regex": "^yes$",
+			"answers":
+			[
+				"Are you sure ?"
+			]
+		},
+		{
+			"description": "Negative",
+			"regex": "^no$",
+			"answers":
+			[
+				"Don't you know ?",
+				"Are you saying no just to be negative ?",
+				"You are being a bit negative.",
+				"Why not ?",
+				"Are you sure ?"
 			]
 		}
 	],
