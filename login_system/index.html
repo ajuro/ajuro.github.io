@@ -25,11 +25,12 @@
       "password":"hashed_password"
   }
   </pre>
-</div>
-  
   In server response contain the request options, the sql query, the array of results and the status.<br>
   In case of an unsuccessful login, "result": null and "status"."success" = false, "status"."code" = "stay" and "status"."message" = "Wrong username or password!"
-  In case of a successful login, one record will be returned as result. The status will be: "success": true 
+  In case of a successful login, one record will be returned as result. The status will be: "success": true <br>
+  The code retourned by the endpoint will guide the client to deiplay the appropiate mask.
+</div>
+  
 <div class="ajuro note">
   <pre>
   {
@@ -86,5 +87,4 @@ New user registration JSON
   }
   </pre>
 </div>
-The code retourned by the endpoint will guide the client to deiplay the appropiate mask.
 </center>
