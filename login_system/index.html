@@ -16,7 +16,7 @@
 <center>
   <h1>Login Documentation</h1>
 <div class="ajuro note">AjuroProductCard<br>Developed by <a href="http://www.linkedin.com/in/florincumpanasu" target="_blank">Cumpanasu Florin</a> for <a href="http://aju.ro" target="_blank">aju.ro</a> resoueces <br>(the romanian open market <a href="http://aju.ro/api" target="_blank">API</a>). </div>
-  Login Request JSON
+Login Request
 <div class="ajuro note">
   <pre>
   {
@@ -25,12 +25,43 @@
       "password":"hashed_password"
   }
   </pre>
+</div>
+Logout Request JSON
+<div class="ajuro note">
+  <pre>
+  {
+      user_action: "user_action_logout"
+  }
+  </pre>
+</div>
+Password Recovery Request
+<div class="ajuro note">
+  <pre>
+  {
+      "user_action":"user_action_recover_password",
+      "email":"office@aju.ro",
+  }
+  </pre>
+</div>
+New User Registration Request
+<div class="ajuro note">
+  <pre>
+  {
+      "user_action":"user_action_register",
+      "email":"office@aju.ro",
+      "password":"hashed_password"
+  }
+  </pre>
+</div>  
+
+<div class="ajuro note">
   In server response contain the request options, the sql query, the array of results and the status.<br>
   In case of an unsuccessful login, "result": null and "status"."success" = false, "status"."code" = "stay" and "status"."message" = "Wrong username or password!"
   In case of a successful login, one record will be returned as result. The status will be: "success": true <br>
   The code retourned by the endpoint will guide the client to deiplay the appropiate mask.
 </div>
-  
+
+Login Response Example
 <div class="ajuro note">
   <pre>
   {
@@ -60,31 +91,4 @@
 </div>
 <br>
 <br>
-Logout Request JSON
-<div class="ajuro note">
-  <pre>
-  {
-      user_action: "user_action_logout"
-  }
-  </pre>
-</div>
-Recover Password JSON
-<div class="ajuro note">
-  <pre>
-  {
-      "user_action":"user_action_recover_password",
-      "email":"office@aju.ro",
-  }
-  </pre>
-</div>
-New user registration JSON
-<div class="ajuro note">
-  <pre>
-  {
-      "user_action":"user_action_register",
-      "email":"office@aju.ro",
-      "password":"hashed_password"
-  }
-  </pre>
-</div>
 </center>
