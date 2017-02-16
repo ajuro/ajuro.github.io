@@ -5,3 +5,79 @@
   // Use this line in your PHP file to initiate the form with the session info
   // RegistredUser.username = "<?php echo($_SESSION['registred_user_id']); ?>";
 </script>
+
+<center>
+  <h1>Login Documentation</h1>
+<div class="ajuro note">AjuroProductCard<br>Developed by <a href="http://www.linkedin.com/in/florincumpanasu" target="_blank">Cumpanasu Florin</a> for <a href="http://aju.ro" target="_blank">aju.ro</a> resoueces <br>(the romanian open market <a href="http://aju.ro/api" target="_blank">API</a>). </div>
+  Login Request JSON
+<div class="ajuro note">
+  <pre>
+  {
+      "user_action":"user_action_login",
+      "email":"office@aju.ro",
+      "password":"hashed_password"
+  }
+  </pre>
+</div>
+  
+  In server response contain the request options, the sql query, the array of results and the status.<br>
+  In case of an unsuccessful login, "result": null and "status"."success" = false, "status"."code" = "stay" and "status"."message" = "Wrong username or password!"
+  In case of a successful login, one record will be returned as result. The status will be: "success": true 
+<div class="ajuro note">
+  <pre>
+  {
+      "request": {
+          "type": "user",
+          "whereCondition": " WHERE `password` = 'hashed_password' ",
+          "skip": 0,
+          "distinct": null,
+          "take": 100
+      },
+      "sql": {
+          "query": "SELECT * FROM user  WHERE `password` = 'hashed_password' ORDER BY `timestamp` DESC LIMIT 100  OFFSET 0"
+      },
+      "result": [
+          {
+              "id": 22,
+              "username": "start"
+          }
+      ],
+      "status": {
+          "success": true,
+          "code": "logout",
+          "message": "Welcome start"
+      }
+  }
+  </pre>
+</div>
+<br>
+<br>
+Logout Request JSON
+<div class="ajuro note">
+  <pre>
+  {
+      user_action: "user_action_logout"
+  }
+  </pre>
+</div>
+Recover Password JSON
+<div class="ajuro note">
+  <pre>
+  {
+      "user_action":"user_action_recover_password",
+      "email":"office@aju.ro",
+  }
+  </pre>
+</div>
+New user registration JSON
+<div class="ajuro note">
+  <pre>
+  {
+      "user_action":"user_action_register",
+      "email":"office@aju.ro",
+      "password":"hashed_password"
+  }
+  </pre>
+</div>
+The code retourned by the endpoint will guide the client to deiplay the appropiate mask.
+</center>
